@@ -1,19 +1,31 @@
 
 
-tampilkanKembali();
 
 
-//~ var destFolder = Folder.selectDialog( "Silahkan Pilih foldernya..");
-//~     if (destFolder == null)
-//~     {
-//~       throw "";
-//~     }
+
+var destFolder = Folder.selectDialog( "Silahkan Pilih foldernya..");
+    if (destFolder == null)
+    {
+      throw "Batal...";
+    }
+
+var doc = app.activeDocument;
+for(var i = 0 ; i < doc.layers.length-1; i++){
+    var namaFilenya = doc.layers[i].name;
+    SavePNG(namaFilenya+".png");
+    doc.layers[i].visible = false;    
+}    
+
+//kembalikan hideLayernya
+
+for(var i = 0 ; i < doc.layers.length-1; i++){
+    var namaFilenya = doc.layers[i].name;    
+    doc.layers[i].visible = true;   
+}    
 
 //~ for (i = 5; i > 0; i--) {
-//~    var colors = app.activeDocument.layerSets.getByName("mockup "+i);
-//~    
+//~    var colors = app.activeDocument.layerSets.getByName("mockup "+i);  
 //~    SavePNG("mockup "+i+".png");
-//~    
 //~    colors.visible = false;
 //~ }
 
@@ -37,3 +49,7 @@ for(var i = 0 ; i < doc.layers.length;i++){
     alert(xx);
 }    
     }
+
+
+
+
